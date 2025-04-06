@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34   // 🔧 수정됨
 
     defaultConfig {
         applicationId "com.lindo.api"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34  // 🔧 수정됨
 
         ndk {
             moduleName "lindo-android"
