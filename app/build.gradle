@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android' // ✅ Kotlin 사용을 위한 플러그인 추가
 
 android {
-    compileSdkVersion 34   // 🔧 수정됨
+    namespace 'com.lindo.api' // ✅ 최신 AGP 요구 사항
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.lindo.api"
         minSdkVersion 21
-        targetSdkVersion 34  // 🔧 수정됨
+        targetSdkVersion 34
 
         ndk {
             moduleName "lindo-android"
@@ -29,6 +31,13 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // ✅ Kotlin 버전 통일
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core:1.12.0'
+}
+
+// ✅ Kotlin 중복 모듈 충돌 방지
+configurations.all {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
 }
